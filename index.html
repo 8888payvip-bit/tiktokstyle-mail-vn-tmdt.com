@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TikTok Mall — Giao diện demo</title>
+<style>
+:root{--blue:#2699f5;--text:#f4f4f4;--muted:#bdbdbd}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;color:var(--text)}
+body{min-height:100vh;overflow:hidden;background:#171717}
+.scene{position:fixed;inset:0;overflow:hidden;background:
+ radial-gradient(ellipse at 50% 46%,rgba(72,72,72,.32),transparent 43%),
+ linear-gradient(120deg,#202020,#151515 55%,#202020)}
+.scene:before{content:"";position:absolute;inset:-10%;opacity:.6;background:
+ radial-gradient(ellipse at 15% 25%,#3a3a3a 0 5%,transparent 5.5%),
+ radial-gradient(ellipse at 77% 20%,#303030 0 7%,transparent 7.5%),
+ radial-gradient(ellipse at 80% 78%,#333 0 8%,transparent 8.5%),
+ radial-gradient(ellipse at 20% 80%,#292929 0 7%,transparent 7.5%)}
+.product{position:absolute;display:grid;place-items:center;width:clamp(85px,13vw,210px);height:clamp(85px,13vw,210px);border:1px solid #5555;border-radius:26px;background:linear-gradient(145deg,#4448,#161616a8);box-shadow:0 20px 55px #0005;transform:rotate(var(--r));font-size:clamp(48px,7vw,100px);filter:grayscale(1);opacity:.45}
+.p1{left:5%;top:7%;--r:-18deg}.p2{left:21%;top:18%;--r:13deg}.p3{right:7%;top:4%;--r:22deg}.p4{right:12%;top:31%;--r:-25deg}.p5{left:6%;top:46%;--r:17deg}.p6{left:27%;bottom:5%;--r:-13deg}.p7{right:25%;bottom:4%;--r:14deg}.p8{right:1%;bottom:25%;--r:-20deg}.p9{left:36%;top:0;--r:30deg}.p10{right:37%;top:10%;--r:-10deg}
+.shade{position:fixed;inset:0;background:rgba(0,0,0,.57)}
+.language{position:fixed;right:30px;top:20px;font-size:13px;color:#eee;display:flex;gap:10px;align-items:center}
+.flag{display:inline-grid;place-items:center;background:#e11b22;width:20px;height:20px;border-radius:50%;font-size:12px}
+main{position:relative;z-index:2;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:30px 18px}
+.login{width:min(394px,100%);margin-top:10px}
+.brand{text-align:center;margin-bottom:40px}
+.logo{font-size:56px;line-height:1;color:#fff;text-shadow:-3px 0 #36d5dc,3px 2px #ff3b66}
+.brand-name{font-size:20px;font-weight:700;margin-top:6px}
+h1{font-family:Georgia,serif;font-weight:400;font-size:21px;text-align:center;margin:0 0 22px;color:#dedede}
+.tabs{display:flex;justify-content:center;gap:0;margin-bottom:13px}
+.tab{flex:1;background:transparent;border:0;color:#f2f2f2;padding:11px 4px 13px;cursor:pointer;font-size:13px;border-bottom:1px solid #777}
+.tab.active{color:#4da3ff;border-bottom:2px solid #399bff}
+.field{height:47px;border:1px solid #aaa;border-radius:4px;display:flex;align-items:center;margin:0 0 22px;background:#2229}
+.field .ico{width:35px;text-align:center;color:#aaa;font-size:18px}
+.field input{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;color:white;font-size:13px;padding:0 10px 0 0}
+.field input::placeholder{color:#c4c4c4}
+.eye{border:0;background:none;color:#aaa;padding:10px;cursor:pointer}
+.options{display:flex;justify-content:space-between;align-items:center;font-size:12px;margin:-1px 0 17px;gap:10px}
+.options a{color:#2699ff;text-decoration:none}
+.terms{color:#eee;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.terms input{accent-color:var(--blue)}
+.submit{height:48px;width:100%;border:0;border-radius:4px;background:#399ff4;color:#fff;font-weight:600;cursor:pointer}
+.submit:hover{background:#228ce6}
+.notice{display:none;margin-top:14px;padding:10px 12px;border:1px solid #555;border-radius:5px;background:#202020;color:#ddd;font-size:12px;line-height:1.5}
+.notice.show{display:block}
+.demo{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);font-size:11px;color:#aaa;text-align:center;width:90%}
+@media(max-height:700px){main{align-items:flex-start;overflow:auto}.login{margin:20px 0}.brand{margin-bottom:20px}.product{opacity:.28}}
+@media(max-width:480px){.language{right:16px;top:14px}.login{max-width:360px}.brand{margin-bottom:28px}.options{font-size:11px}.terms{white-space:normal}}
+</style>
+</head>
+<body>
+<div class="scene" aria-hidden="true">
+  <div class="product p1">👜</div><div class="product p2">📷</div>
+  <div class="product p3">👟</div><div class="product p4">👕</div>
+  <div class="product p5">☕</div><div class="product p6">🧥</div>
+  <div class="product p7">👞</div><div class="product p8">⌚</div>
+  <div class="product p9">🎧</div><div class="product p10">🧢</div>
+</div>
+<div class="shade"></div>
+<div class="language">Tiếng Việt <span class="flag">★</span>⌄</div>
+<main>
+  <section class="login" aria-label="Giao diện đăng nhập minh họa">
+    <div class="brand"><div class="logo">♪</div><div class="brand-name">TikTok Mall</div></div>
+    <h1>đăng nhập vào tài khoản của bạn</h1>
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="emailTab" type="button" role="tab" aria-selected="true">E-mail</button>
+      <button class="tab" id="phoneTab" type="button" role="tab" aria-selected="false">Số điện thoại</button>
+    </div>
+    <form id="demoForm">
+      <label class="field"><span class="ico" id="userIcon">♙</span><input id="identity" autocomplete="off" placeholder="Vui lòng nhập địa chỉ email" aria-label="Email" required></label>
+      <label class="field"><span class="ico">♙</span><input id="password" type="password" placeholder="Vui lòng nhập mật khẩu của bạn" aria-label="Mật khẩu" required><button class="eye" type="button" id="togglePassword" aria-label="Hiện hoặc ẩn mật khẩu">◉</button></label>
+      <div class="options">
+        <label class="terms"><input type="checkbox" id="agree"> Tôi đã đọc và đồng ý <a href="#" id="termsLink">Quy tắc thương mại</a></label>
+        <a href="#" id="forgot">Quên mật khẩu?</a>
+      </div>
+      <button class="submit" type="submit">Đăng nhập</button>
+      <div class="notice" id="notice" role="status"></div>
+    </form>
+  </section>
+</main>
+<div class="demo">Bản demo giao diện — không gửi hoặc lưu thông tin đăng nhập.</div>
+<script>
+const emailTab=document.getElementById('emailTab'), phoneTab=document.getElementById('phoneTab');
+const identity=document.getElementById('identity'), notice=document.getElementById('notice');
+function setMode(phone){
+  emailTab.classList.toggle('active',!phone); phoneTab.classList.toggle('active',phone);
+  emailTab.setAttribute('aria-selected',String(!phone)); phoneTab.setAttribute('aria-selected',String(phone));
+  identity.value=''; identity.type=phone?'tel':'text';
+  identity.placeholder=phone?'Vui lòng nhập số điện thoại':'Vui lòng nhập địa chỉ email';
+  identity.setAttribute('aria-label',phone?'Số điện thoại':'Email');
+}
+emailTab.addEventListener('click',()=>setMode(false));
+phoneTab.addEventListener('click',()=>setMode(true));
+document.getElementById('togglePassword').addEventListener('click',()=>{
+  const p=document.getElementById('password'); p.type=p.type==='password'?'text':'password';
+});
+function showNotice(message){notice.textContent=message;notice.classList.add('show');}
+document.getElementById('demoForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!document.getElementById('agree').checked){showNotice('Đây là bản demo giao diện. Hãy tích ô đồng ý để xem trạng thái minh họa.');return;}
+  showNotice('Đăng nhập chỉ là mô phỏng. Bản demo này không gửi hoặc lưu email, số điện thoại hay mật khẩu.');
+});
+document.getElementById('forgot').addEventListener('click',e=>{e.preventDefault();showNotice('Đây là liên kết minh họa. Chức năng khôi phục tài khoản cần được kết nối với hệ thống thật.');});
+document.getElementById('termsLink').addEventListener('click',e=>{e.preventDefault();showNotice('Quy tắc thương mại — nội dung minh họa cho giao diện demo.');});
+</script>
+</body>
+</html>
